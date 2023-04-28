@@ -1,0 +1,65 @@
+<div class="container-fluid g-0">
+  <div class="row g-0">
+    <!-- boton hamburgesa -->
+    <nav class="navbar flex navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseWidthExample"
+        aria-expanded="true"
+        aria-controls="collapseWidthExample"
+        (click)="cambiarNombre()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- menu superior -->
+      <ul class="navbar-nav clMarg" *ngIf="logoutbtn"  (click)="cambiarNombre()">
+        <li class="nav-item dropdown">
+          <!-- logo + usuario -->
+          <img
+            src="https://planidear.com.ar/pruebamenu/assets/img/menu.png"
+            class="rounded float-start clLogoIc"
+            alt="..."
+          />
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+           {{nombre}}
+          </a>
+          <ul class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Acción</a></li>
+            <li><a class="dropdown-item" href="#">Otra acción</a></li>
+            <li><a class="dropdown-item" href="#">Algo más aquí</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div
+      class="col-sm-2 collapse collapse-horizontal"
+      id="collapseWidthExample"
+    >
+
+      <!-- menu izquierdo [usuarioHijo]='usuarioHijo' -->
+      <section class="vh-100 sectionMenu">
+        <div class="container py-2 h-100">
+          <app-menu [nombre]='nombre'></app-menu>
+        </div>
+      </section>
+    </div>
+
+    <!-- pagina central *ngIf="loginbtn" -->
+    <div class="col">
+      <section class="vh-100 sectionPag">
+
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  </div>
+</div>

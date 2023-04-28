@@ -1,0 +1,191 @@
+<div class="container-fluid" *ngIf="logoutbtn">
+  <div   class="row">
+    <div  class="col-3 " id="ColIzq" >
+
+      <form [formGroup]="usuaForm" (submit)="Agregar()">
+
+        <div class="form-group" >
+          <label for="id">id</label>
+          <input type="number" formControlName="id" class="form-control"  id="id" name="id" minlength="4" >
+        </div>
+
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" formControlName="name" class="form-control"  id="name" name="name" minlength="4" >
+        </div>
+        <div class="errorUsuarios" *ngIf="usuaForm.invalid && usuaForm.touched">
+          <span *ngIf="usuaForm.controls['name'].errors?.['minlength']">Usuario debe tener al menos un 4 caracteres</span><br>
+                 </div>
+
+        <div class="form-group">
+          <label for="email">emails</label>
+          <input type="email" formControlName="email" class="form-control" id="email" name="email">
+        </div>
+
+      <div class="errorUsuarios" *ngIf="usuaForm.invalid && usuaForm.touched">
+        <span *ngIf="usuaForm.controls['email'].errors?.['email']">EL email debe tener @</span><br>
+
+               </div>
+
+        <div class="form-group">
+          <label for="password">passwords</label>
+
+          <input type="password" formControlName="password" class="form-control" id="password" name="password" minlength="4" >
+        </div>
+        <div class="errorUsuarios" *ngIf="usuaForm.invalid && usuaForm.touched">
+          <span *ngIf="usuaForm.controls['password'].errors?.['minlength']">Password debe tener al menos un 4 caracteres</span><br>
+        </div>
+
+
+<div class="form-group">
+          <label for="role_id">Rol</label>
+          <select formControlName="rol" class="form-control" name="rol" size="1" id="rol" >
+                  <option value="user" selected>user</option>
+                  <option value="admin" >admin</option>
+                </select>
+              </div>
+              <div class="md-4">
+                <button class="btn btn-primary" [disabled]="usuaForm.invalid" type="submit">Cargar</button>
+
+               </div>
+
+
+        </form>
+        <div class="mt-2">
+
+          <button class="btn btn-info text-white float-right" (click)="Modificar()">Modificar</button>
+         </div>
+
+        <div>
+
+          </div>
+    </div>
+
+    <div class="col-9 CentroHome" id="ColCentral">
+
+      <table class = "table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>password</th>
+                <th>rol</th>
+                <th colspan="3">Opciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let item of usuarios">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.password}}  </td>
+                <td>{{item.rol}}</td>
+ <td><button class="btn btn-success" (click)="editar(item)" type="button">Editar</button></td>
+<td><button class="btn btn-danger" (click)="eliminar(item.id)" type="button">Eliminar</button></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- <div class="container-fluid">
+  <div   class="row">
+    <div  class="col-3 " id="ColIzq" >
+
+      <form [formGroup]="usuaForm" (ngSubmit)="Agregar()">
+
+        <div class="form-group">
+          <label for="id">id</label>
+          <input type="number" formControlName="id" class="form-control"  id="id" name="id" minlength="4" [(ngModel)]="Usuarios.id">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" formControlName="name" class="form-control"  id="name" name="name" minlength="4" [(ngModel)]="Usuarios.name">
+        </div>
+        <div class="errorUsuarios" *ngIf="usuaForm.invalid && usuaForm.touched">
+          <span *ngIf="usuaForm.controls['name'].errors?.['minlength']">Usuario debe tener al menos un 4 caracteres</span><br>
+                 </div>
+
+        <div class="form-group">
+          <label for="email">emails</label>
+          <input type="email" formControlName="email" class="form-control" id="email" name="email" [(ngModel)]="Usuarios.email">
+        </div>
+
+      <div class="errorUsuarios" *ngIf="usuaForm.invalid && usuaForm.touched">
+        <span *ngIf="usuaForm.controls['email'].errors?.['email']">EL email debe tener @</span><br>
+
+               </div>
+
+        <div class="form-group">
+          <label for="password">passwords</label>
+
+          <input type="password" formControlName="password" class="form-control" id="password" name="password" minlength="4" [(ngModel)]="Usuarios.password">
+        </div>
+        <div class="errorUsuarios" *ngIf="usuaForm.invalid && usuaForm.touched">
+          <span *ngIf="usuaForm.controls['password'].errors?.['minlength']">Password debe tener al menos un 4 caracteres</span><br>
+        </div>
+
+
+<div class="form-group">
+          <label for="role_id">Rol</label>
+          <select formControlName="rol" class="form-control" name="rol" size="1" id="rol" [(ngModel)]="Usuarios.rol">
+                  <option value="user" selected>user</option>
+                  <option value="admin" >admin</option>
+                </select>
+              </div>
+
+
+        <button class="btn btn-primary" [disabled]="usuaForm.invalid" type="submit">Cargar</button>
+
+
+
+        </form>
+        <button class="btn btn-info text-white float-right" (click)="Modificar()">Modificar</button>
+
+    </div>
+
+    <div class="col-9 CentroHome" id="ColCentral">
+
+      <table class = "table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>password</th>
+                <th>rol</th>
+                <th colspan="3">Opciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let item of usuarios">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.password}}</td>
+                <td>{{item.rol}}</td>
+
+
+ <td><button class="btn btn-success" (click)="editar(item)" type="button">Editar</button></td>
+<td><button class="btn btn-danger" (click)="eliminar(item.id)" type="button">Eliminar</button></td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+
+  </div>
+</div> -->
+

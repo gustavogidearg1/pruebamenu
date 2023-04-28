@@ -1,0 +1,65 @@
+ <nav class="navbar flex navbar-dark bg-dark ">
+  <div class="container-fluid btn-group ">
+    <!-- <img src="../../assets/img/menu.png" class="rounded float-start clLogo" alt="...">
+    <a class="navbar-brand" href="#">Menu</a> -->
+
+    <div class="navbar">
+      <ul class="nav nav-link ">
+      <li class="nav-item " >
+        <img src="https://planidear.com.ar/pruebamenu/assets/img/menuincon.png" class="rounded float-start clLogoIc" alt="...">
+        <a class="navbar-brand clFont"   aria-current="page" routerLink="home" >Inicio</a>
+      </li>
+<hr>
+<!--   -->
+<div>
+  <a class="btn btn-dark btn-sm " data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4">
+    Acceso
+  </a>
+  <div class="collapse" id="collapseExample4">
+
+    <div class="d-grid gap-2 col-6 mx-auto">
+
+      <li class="nav-item ">
+        <a class="navbar-brand clFont" *ngIf="loginbtn"   aria-current="page" routerLink="login" >Ingreso</a>
+      </li>
+
+      <li class="nav-item ">
+        <a class="navbar-brand clFont" *ngIf="loginbtn" aria-current="page" routerLink="registration" >Registro</a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand clFont" *ngIf="logoutbtn" aria-current="page" (click)="logout()" >Cerrar Sesion {{nombre}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand clFont" *ngIf="logoutbtn" aria-current="page" routerLink="Usuario">Usuarios</a>
+      </li>
+    </div>
+  </div>
+
+</div>
+<hr>
+      <li class="nav-item dropdown">
+
+        <a class="navbar-brand dropdown-toggle clFont" data-bs-toggle="dropdown" href="#" id="navbarDropdownMenuLink"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu desplegable</a>
+
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="Pagina1">Pagina 1 </a></li>
+          <li><a class="dropdown-item" routerLink="Pagina2">Pagina 2</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item" routerLink="Pagina1">Enlace separado 1</a>
+            <a class="dropdown-item" routerLink="Pagina2">Enlace separado 2</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+
+
+
+</div>
+
+</div>
+</nav>
+
+
